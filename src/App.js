@@ -13,7 +13,7 @@ function App() {
   const [wantsrec, setwrec] = useState(false)
 
   const Addbook = () => {
-    if (title == "") {
+    if (title === "") {
       alert("type a book title")
     } 
     else {
