@@ -68,13 +68,24 @@ function App() {
 
       <div className="booklog">
         <h2>Book Log</h2>
-        <ul className="booklist">
-          {books.map((book, index) => (
-            <li key={index}>
-              <strong>{book.title}</strong> — {book.genre} (Read on: {book.date})
-            </li>
-          ))}
-        </ul>
+        <table className="btable">
+          <thead>
+            <tr>
+              <th>Book title</th>
+              <th>Genre</th>
+              <th>Date read</th>
+            </tr>
+          </thead>
+          <tbody>
+            {books.map((book, index) => (
+              <tr key={index}>
+              <td>{book.title}</td>
+              <td>{book.genre}</td>
+              <td>{book.date}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
       {popup && (
