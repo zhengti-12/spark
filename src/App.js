@@ -3,16 +3,14 @@ import './App.css';
 
 function App() {
   const [books, setbooks] = useState([])
-
   const [title, settitle] = useState('')
   const [genre, setgenre] = useState('')
   const [date, setdate] = useState('')
-
   const [popup, setpopup] = useState(false)
   const [recgenre, setrec] = useState('')
   const [wantsrec, setwrec] = useState(false)
 
-  const Addbook = () => {
+  function Addbook () {
     if (title === "") {
       alert("type a book title")
     } 
@@ -29,7 +27,7 @@ function App() {
     settitle('')
     setgenre('')
     setdate('')
-   }
+    }
   }
 
   const closepopup = () => {
@@ -54,7 +52,7 @@ function App() {
         <option value = "">select a genre</option>
         <option value = "romance">romance</option>
         <option value = "comedy">comedy</option>
-        <option value = "sci_fi">sci-fi</option>
+        <option value = "sci_fi">Sci-fi</option>
         <option value = "action">action</option>
         <option value = "horror">horror</option>
         <option value = "non_fiction">non-fiction</option>
@@ -65,13 +63,12 @@ function App() {
         value = {date}
         onChange = {(e) => setdate(e.target.value)}/>
 
-      <button onClick={Addbook}> add book </button>
+      <button onClick={Addbook}> Add book </button>
       </div>
 
       <div className="booklog">
         <h2>Book Log</h2>
         <ul className="booklist">
-          {/* This displays every book in your list */}
           {books.map((book, index) => (
             <li key={index}>
               <strong>{book.title}</strong> — {book.genre} (Read on: {book.date})
@@ -81,14 +78,29 @@ function App() {
       </div>
 
       {popup && (
-        <div className="popupoverlay">
-          <div className="popupcontent">
+        <Recpopup
+        wantsrec={wantsrec}
+        setwrec={setwrec}
+        recgenre={recgenre}
+        setrec={setrec}
+        recs={recs}
+        onclose={closepopup}/>
+      
+      )}
+    </div>
+  )
+}
+
+function Recpopup({wantsrec, setwrec, recgenre, setrec, recs, onclose}) {
+  return (
+    <div className = "popupoverlay">
+                <div className="popupcontent">
 
             {!wantsrec ? (
             <>
             <h3>Book logged! Would you like a recommendation?</h3>
             <button onClick ={() => setwrec(true)}>yes</button>
-            <button onClick={closepopup}>No</button>
+            <button onClick={onclose}>No</button>
             </>
             ) : (
             <>
@@ -96,7 +108,7 @@ function App() {
             <select onChange={(e) => setrec(e.target.value)}>
               <option value="">Choose</option>
               <option value="romance">romance</option>
-              <option value="sci_fi">sci-Fi</option>
+              <option value="sci_fi">Sci-fi</option>
               <option value="non_fiction">non-fiction</option>
               <option value="horror">horror</option>
               <option value="comedy">comedy</option>
@@ -106,14 +118,12 @@ function App() {
             {recgenre && (
               <div className="result">
                 <p>You should read: <b>{recs[recgenre]}</b></p>
-               <button onClick={closepopup}>Exit</button>
+               <button onClick={onclose}>Exit</button>
             </div>
             )}
           </>
           )}
         </div>
-      </div>
-      )}
     </div>
   )
 }
