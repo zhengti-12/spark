@@ -1,3 +1,13 @@
+.heading h1 {
+  text-align: center;
+  color: #9b6a5b;
+  font-family: 'kish';
+  padding: 20px;
+  font-size: 50px;
+  font-weight: bold
+
+}
+
 .App {
   text-align: center;
 }
@@ -16,15 +26,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 55px;
+  padding-top: 10px;
   min-height: 100vh;
-  color: black
+  color: #9b6a5b
 }
 
 .book {
   background-color: rgba(255, 255, 255, 0.67);
-  border: 8px solid #a79283;
-  border-radius: 10px;
+  border: 6px solid #a79283;
+  border-radius: 6px;
   width: 400px;
   display: flex;
   flex-direction: column;
@@ -37,7 +47,7 @@ body {
   font-family: 'kish';
   text-align: center;
   margin-bottom: 10px;
-  color: #a79283
+  color: #9b6a5b
 }
 
 input, select{
@@ -54,7 +64,7 @@ input, select{
 .book button {
   background-color: #f8edeb;
   padding: 12px 20px;
-  color: #a79283;
+  color: #9b6a5b;
   border: 4px solid #a79283;
   border-radius: 10px;
   font-size: 20px;
@@ -69,17 +79,27 @@ input, select{
   width: 100%;
   font-family: 'kish';
   font-size: 45px;
-  color: #a79283;
-  margin-bottom: 10px;
-  margin-top: 10px
+  color: #9b6a5b;
+  margin-bottom: 0px;
+  margin-top: 25px
+}
+
+.booklog {
+  width: 90%;
+  max-width: 800px;
 }
 
 .btable {
-  margin-top: 30px;
+  margin-top: 10px;
   background-color: rgba(255, 255, 255, 0.67);
-  border: 8px solid #a79283;
-  border-radius: 10px;
+  border: 6px solid #a79283;
+  border-radius: 6px;
+  color:#9b6a5b;
   font-family: 'kish';
+  border-collapse: collapse;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto
 }
 
 .btable th {
@@ -87,7 +107,8 @@ input, select{
   text-align: left;
   border-bottom: 1px solid #a79283;
   border-right: 1px solid #a79283;
-  font-weight: bold
+  font-weight: bold;
+  color: #9b6a5b;
 }
 
 .btable td {
@@ -112,7 +133,7 @@ input, select{
 
 .popupcontent {
   background-color: white;
-  padding: 30px;
+  padding: 40px;
   border-radius: 15px;
   text-align: center;
   color: #333;
@@ -120,22 +141,14 @@ input, select{
   box-shadow: 0 5px 20px rgba(0,0,0,0.5);
 }
 
-.popupcontent button {
+.popupbutton {
+  background-color: #f8edeb;
+  padding: 8px 20px;
+  color: #9b6a5b;
+  border: 4px solid #a79283;
+  border-radius: 10px;
+  font-size: 20px;
+  font-family: 'kish';
   margin: 10px;
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-
-.popupcontent button:first-of-type {
-  background-color: #4CAF50; 
-  color: white;
-}
-
-.popupcontent button:last-of-type {
-  background-color: #f44336;
-  color: white;
+  width: fit-content;
 }

@@ -37,6 +37,10 @@ function App() {
   }
 
   return (
+    <div className="app">
+    <div className = "heading"> <h1> Book tracker and recommender</h1>
+    </div>
+
     <div className = "appheader">
       <div className="book">
        <h2>Log a new book</h2>
@@ -52,7 +56,7 @@ function App() {
         <option value = "">select a genre</option>
         <option value = "romance">romance</option>
         <option value = "comedy">comedy</option>
-        <option value = "sci_fi">Sci-fi</option>
+        <option value = "sci_fi">sci-fi</option>
         <option value = "action">action</option>
         <option value = "horror">horror</option>
         <option value = "non_fiction">non-fiction</option>
@@ -99,6 +103,7 @@ function App() {
       
       )}
     </div>
+    </div>
   )
 }
 
@@ -110,8 +115,8 @@ function Recpopup({wantsrec, setwrec, recgenre, setrec, recs, onclose}) {
             {!wantsrec ? (
             <>
             <h3>Book logged! Would you like a recommendation?</h3>
-            <button onClick ={() => setwrec(true)}>yes</button>
-            <button onClick={onclose}>No</button>
+            <button className = "popupbutton" onClick ={() => setwrec(true)}>yes</button>
+            <button className = "popupbutton" onClick={onclose}>No</button>
             </>
             ) : (
             <>
@@ -119,7 +124,7 @@ function Recpopup({wantsrec, setwrec, recgenre, setrec, recs, onclose}) {
             <select onChange={(e) => setrec(e.target.value)}>
               <option value="">Choose</option>
               <option value="romance">romance</option>
-              <option value="sci_fi">Sci-fi</option>
+              <option value="sci_fi">sci-fi</option>
               <option value="non_fiction">non-fiction</option>
               <option value="horror">horror</option>
               <option value="comedy">comedy</option>
@@ -129,7 +134,7 @@ function Recpopup({wantsrec, setwrec, recgenre, setrec, recs, onclose}) {
             {recgenre && (
               <div className="result">
                 <p>You should read: <b>{recs[recgenre]}</b></p>
-               <button onClick={onclose}>Exit</button>
+               <button className = "popupbutton" onClick={onclose}>Exit</button>
             </div>
             )}
           </>
