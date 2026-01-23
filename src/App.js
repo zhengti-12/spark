@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import './App.css';
 
 function App() {
@@ -9,6 +9,12 @@ function App() {
   const [popup, setpopup] = useState(false)
   const [recgenre, setrec] = useState('')
   const [wantsrec, setwrec] = useState(false)
+
+  useEffect(() => {
+  fetch('http://localhost:5000/api/books')
+    .then(res => res.json())
+    .then(data => setbooks(data));
+}, []);
 
   function Addbook () {
     if (title === "") {
@@ -23,10 +29,18 @@ function App() {
       date: date
     }
 
+  fetch('http://localhost:5000/api/books', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newbook)
+  })
+  .then(() => {
+
     setbooks([...books, newbook])
     settitle('')
     setgenre('')
     setdate('')
+    });
     }
   }
 
