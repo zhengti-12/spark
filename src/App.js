@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import './App.css';
 
 function App() {
@@ -10,12 +10,6 @@ function App() {
   const [recgenre, setrec] = useState('')
   const [wantsrec, setwrec] = useState(false)
 
-  useEffect(() => {
-  fetch('http://localhost:5001/api/books')
-    .then(res => res.json())
-    .then(data => setbooks(data));
-}, []);
-
   function Addbook () {
     if (title === "") {
       alert("type a book title")
@@ -23,37 +17,38 @@ function App() {
     else {
       setpopup(true)
 
-    const newbook = {
-      title: title,
-      genre: genre,
-      date: date
-    }
-
-  fetch('http://localhost:5001/api/books', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(newbook)
-  })
-  .then(() => {
+    const newbook = {title: title, genre: genre, date: date}
 
     setbooks([...books, newbook])
-    settitle('')
-    setgenre('')
-    setdate('')
-    });
+    settitle('');
+    setgenre(''); 
+    setdate('');}
     }
-  }
-
   const closepopup = () => {
     setpopup(false)
     setwrec(false)
     setrec('')
   }
 
+  const genretally = {}
+
+  books.forEach ((book) => {
+    const x = book.genre;
+    if (genretally[x]){
+      genretally[x]=genretally[x]+1}
+    else {
+      genretally[x]=1
+  }
+      
+    })
+  
+
   return (
     <div className="app">
     <div className = "heading"> <h1> Book tracker and recommender</h1>
     </div>
+
+    <div className="toplayout">
 
     <div className = "appheader">
       <div className="book">
@@ -83,6 +78,22 @@ function App() {
 
       <button onClick={Addbook}> Add book </button>
       </div>
+
+      <div className="genresidebar">
+    <h3>Genre Tally</h3>
+  
+    <p>Romance: <strong>{genretally["romance"] || 0}</strong></p>
+    <p>Action: <strong>{genretally["action"] || 0}</strong></p>
+    <p>Sci-Fi: <strong>{genretally["sci_fi"] || 0}</strong></p>
+    <p>Horror: <strong>{genretally["horror"] || 0}</strong></p>
+    <p>Comedy: <strong>{genretally["comedy"] || 0}</strong></p>
+    <p>Non-Fiction: <strong>{genretally["non_fiction"] || 0}</strong></p>
+  
+    <hr />
+    <p>Total: <strong>{books.length}</strong></p>
+  </div>
+  </div>
+</div>
 
       <div className="booklog">
         <h2>Book Log</h2>
@@ -116,7 +127,6 @@ function App() {
         onclose={closepopup}/>
       
       )}
-    </div>
     </div>
   )
 }
@@ -154,7 +164,7 @@ function Recpopup({wantsrec, setwrec, recgenre, setrec, recs, onclose}) {
           </>
           )}
         </div>
-    </div>
+        </div>
   )
 }
 
