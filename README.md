@@ -4,7 +4,7 @@
 
 # project summary: This is a personalized book trackers where users can enter new books they read. 
 
-# features I chose to include: It will pop up a form to give a new recommendation for every book they enter, and it tracks the number of books in each genre the user has read. 
+# features I chose to include: Add book function with genre and date. It will pop up a form to give a new recommendation for every book they enter, and it tracks the number of books in each genre the user has read. 
 
 # time spent: 8 hours
 
