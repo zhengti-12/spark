@@ -1,6 +1,6 @@
 # book tracker
 
-# vercel: my-project-git-main-tiffany-zhengs-projects.vercel.app
+# vercel:# [my-project-git-main-tiffany-zhengs-projects.vercel.app]
 
 # project summary: this is a personalized book trackers where users can enter new books and have a log for their books.
 
